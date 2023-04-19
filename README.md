@@ -18,8 +18,9 @@
       - 제목, 내용, 사진, 동영상, 파일 수정
     - 게시글 리스트 보기
       - 최신 게시물이 리스트 형식으로 출력
+      - 작성자의 프로필 사진, 닉네임, 제목, 내용, 좋아요 수, 댓글 수, 조회수가 보여짐
     - 게시글 상세보기
-      - 좋아요의 수와 댓글 수 작성
+      - 좋아요의 수와 댓글 수 표시
     - 댓글 작성
       - 내용만 작성
       - 페이징 처리 3개씩 10페이지
@@ -27,12 +28,13 @@
       - 본인 게시물이 아닌 경우
     - 페이징 처리
       - 한페이지에 5개씩 최대 10페이지까지
+      - 이전 섹션, 다음 섹션 기능
     - 검색 기능
       - 인기 검색어 기능
 #### User - Board 관계
-  1. User가 Board를 작성한다.  1:n
-  2. User가 Board에 좋아요.    N:M
-  3. User가 Board에 댓글담.    N:M
+  1. User가 Board를 작성함.  1:N
+  2. User가 Board에 좋아요.  N:M
+  3. User가 Board에 댓글담.  N:M
 
 ### 개발 환경
 - SpringBoot, OracleDB, React, JPA
@@ -41,3 +43,11 @@
 - CREATE USER team4 IDENTIFIED BY 1234;
 2. 권한 부여
 - GRANT CONNECT, RESOURCE TO team4;
+3. 시퀀스 조회
+- -- 시퀀스명으로 조회(세부정보)
+   SELECT * FROM all_sequences
+   WHERE sequence_name = 'BOARD_SEQ'
+
+- -- 유저명으로 조회(리스트)
+SELECT * FROM all_sequences
+WHERE sequence_owner = 'TEAM4'
